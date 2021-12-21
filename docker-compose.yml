@@ -1,0 +1,21 @@
+version: "3.7"
+services: 
+  
+  mysql:
+    build: 
+      context: .
+      args: 
+        TAG: 5.7
+    environment: 
+      MYSQL_ROOT_PASSWORD: Root@1
+      MYSQL_DATABASE: dbname
+      MYSQL_USER: dbuser
+      MYSQL_PASSWORD: Admin@1
+    restart: unless-stopped
+    volumes: 
+      - db_data:/var/lib/mysql
+    ports: 
+      - "3366:3306"
+
+volumes: 
+  db_data:
